@@ -1,0 +1,35 @@
+
+<!--
+<div *ngIf="show_data">
+	{{show_data.nombre}}
+</div>
+-->
+
+
+<form #formContacto="ngForm" (ngSubmit)="onSubmit(formContacto)">
+	
+	<mat-form-field class="example-full-width">
+		<input matInput placeholder="Nombre" type="text" name="nombre" #nombre="ngModel" [(ngModel)]="usuario.nombre" required pattern="[a-zA-Z]+"/>  
+	</mat-form-field>
+	<br>
+
+	<mat-form-field class="example-full-width">
+		<input matInput placeholder="Apellido" type="text" name="apellidos" #apellidos="ngModel" [(ngModel)]="usuario.apellidos" required pattern="[a-zA-Z]+" /> 
+	</mat-form-field>
+	<br>
+
+	<mat-form-field class="example-full-width">
+		<input matInput placeholder="Email" type="email" name="email" #email="ngModel" [(ngModel)]="usuario.email" required  />
+	</mat-form-field>
+	<br>
+
+	<mat-form-field class="example-full-width">
+		<textarea matInput placeholder="Mensaje" name="mensaje" #mensaje="ngModel" [(ngModel)]="usuario.mensaje" required></textarea>
+	</mat-form-field>
+	<br>
+	
+
+		<button mat-raised-button color="primary" type="submit" [disabled]="!formContacto.form.valid">Enviar</button>
+	
+
+</form>

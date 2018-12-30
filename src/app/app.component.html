@@ -1,0 +1,42 @@
+<!--<div class="app" [ngStyle]="{
+								'background': config.fondo,
+								'color': config.color,
+								'padding': '20px',
+								'border': '5px solid black'
+							}">
+	<hr>
+	<h4>Aqui empieza el componente Home</h4>
+	<h1>Bienido a HOME</h1>
+	<h1>{{ title }}</h1>
+	<p>{{ descripcion }}</p>
+	<button (click)="ocultarCurso(false)" *ngIf="mostrarCurso">Ocultar</button>
+	<button (click)="ocultarCurso(true)" *ngIf="!mostrarCurso">Mostrar</button>
+	<h4>Aqui termina el componente Home</h4>
+	<hr>
+</div>
+
+<div class="cursos" *ngIf="mostrarCurso">
+	<hr>
+	<h4>Aqui empieza el componente Cursos</h4>
+	<app-cursos></app-cursos>
+	<h4>Aqui termina el componente Cursos</h4>
+	<hr>
+</div>
+
+<div class="zapatillas">
+	<hr>
+	<h4>Aqui empieza el componente Zapatillas</h4>
+	<app-zapatillas></app-zapatillas>
+	<h4>Aqui termina el componente Zapatillas</h4>
+	<hr>
+</div>-->
+	
+<app-my-nav></app-my-nav>
+<div class="container-component">
+	<mat-card>
+		<router-outlet></router-outlet>
+	</mat-card>
+</div>
+<mat-toolbar color="primary">
+  <span>My Footer</span>
+</mat-toolbar>

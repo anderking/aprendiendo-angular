@@ -1,0 +1,66 @@
+<h2>Lista de Zapatillas</h2>
+
+<ul *ngFor="let zapatilla of zapatillas">
+	<div *ngIf="zapatilla.stock; then siStock else noStock"></div>
+	
+	<ng-template #siStock>
+
+		<li><strong>Nombre: </strong>{{ zapatilla.nombre }}</li>
+		<li><strong>Marca: </strong>{{ zapatilla.marca }}</li>
+		<li><strong>Color: </strong>{{ zapatilla.color }}</li>
+		<li>
+			<strong>Precio: </strong>{{ zapatilla.precio }}
+			<span
+				*ngIf="zapatilla.precio < 50"
+				[style.background]="zapatilla.precio < 50 ? 'orange': 'yellow'"
+				[style.color]="zapatilla.precio < 50 ? 'white': 'black'"
+			>
+			<b>¡EN OFERTA!</b>
+			</span>
+		</li>
+		<li><strong>Stock: </strong>{{ zapatilla.stock }}</li>
+	</ng-template>
+	
+	<ng-template #noStock>
+		<li><strong>Nombre: </strong>{{ zapatilla.nombre }}</li>
+		<li [ngClass]="{'fondoRojo': zapatilla.marca == 'Jordan'}">
+			<strong>Marca: </strong>{{ zapatilla.marca }}
+		</li>
+		<li><strong>Color: </strong>{{ zapatilla.color }}</li>
+		<li [class.altoPrecio]="zapatilla.precio >= 50">
+		<strong>Precio: </strong>{{ zapatilla.precio }}
+		<span
+			
+			[style.background]="zapatilla.precio < 50 ? 'orange': 'yellow'"
+			[style.color]="zapatilla.precio < 50 ? 'white': 'black'">
+			<b>¡EN OFERTA!</b>
+		</span>
+		</li>
+		<li><strong>Stock: </strong>{{ zapatilla.stock }}</li>
+	</ng-template>
+</ul>
+
+
+
+<h2>Marcas</h2>
+<mat-form-field class="example-full-width">
+	<input matInput placeholder="Nueva marca" type="text" [(ngModel)]="nueva_marca" (blur)="onBlur()" (keyup.enter)="onKey()">
+</mat-form-field>
+
+<button mat-raised-button color="primary" (click)="addMarcas()">Añadir</button>
+
+<ul>
+	<li *ngFor="let marca of marcas; let indice=index">{{ marca }} <button mat-raised-button color="primary" (click)="borrarMarcas(indice)">Borrar</button></li>
+</ul>
+
+<h2>Switch</h2>
+<mat-form-field class="example-full-width">
+	<input matInput placeholder="red, blue or orange" type="text" [(ngModel)]="color">
+</mat-form-field>
+
+<ul [ngSwitch]="color">
+	<li *ngSwitchCase="'red'">El color es <span [ngStyle]="{'background':'red'}">Rojo</span></li>
+	<li *ngSwitchCase="'blue'">El color es <span [ngStyle]="{'background':'blue'}">Azul</span></li>
+	<li *ngSwitchCase="'orange'">El color es <span [ngStyle]="{'background':'orange'}">Naranja</span></li>
+	<li *ngSwitchDefault>El color es <b>Sin Color</b></li>
+</ul>

@@ -1,0 +1,12 @@
+<h2>El curso se llama {{nombre}} y tiene {{horas}} horas</h2>
+<div class="example-button-row">
+	<button mat-raised-button color="primary" (click)="cambiarNombre()" (click)="ocultar(false)" *ngIf="mostrar" >Cambiar nombre curso</button>
+	<button mat-raised-button color="primary" (click)="cambiarNombre()" (click)="ocultar(true)" *ngIf="!mostrar" >Volver nombre curso</button>
+	<button mat-raised-button color="primary" (click)="redirigirNombre()">Nombre</button>
+	<button mat-raised-button color="primary" (click)="redirigirCosto()">Costo</button>
+</div>
+
+<h2 *ngIf="nombre">{{ nombre }}</h2>
+<h2 *ngIf="costo">{{ costo }}</h2>
+
+
